@@ -1,0 +1,19 @@
+{
+  "session_id": "e261caa56c884ae3a2364f8d9b8ccaf4",
+  "agent_id": "17b0480b97284bd48a2e1cbec1d7cea3",
+  "title": "新会话",
+  "created_at": "2026-04-06 16:38:34",
+  "updated_at": "2026-04-06 16:39:17",
+  "messages": [
+    {
+      "role": "user",
+      "content": "你好啊，减脂期的晚餐可以吃什么",
+      "created_at": "2026-04-06 16:39:12"
+    },
+    {
+      "role": "assistant",
+      "content": "根据当前知识库资料，暂时无法完全确定。",
+      "created_at": "2026-04-06 16:39:17"
+    }
+  ]
+}
