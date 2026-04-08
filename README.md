@@ -1,5 +1,3 @@
-终端输入启动
-streamlit run app.py
 A modular, extensible Retrieval-Augmented Generation (RAG) platform built with LangChain 1.x, Chroma, and DashScope LLMs.
 
 Overview
@@ -10,6 +8,12 @@ Knowledge-based QA systems
 Automated report generation
 Prompt optimization for generative AI
 The project emphasizes modularity, scalability, and reusability, making it suitable for both academic projects and real-world applications.
+
+🖥️ Demo Preview
+
+![Chat Page](docs/images/chat.png)
+![Agent Manage](docs/images/create_agent.png)
+![Knowledge Base](docs/images/knowledge_store.png)
 
 Features
 🤖 Multi-Agent System

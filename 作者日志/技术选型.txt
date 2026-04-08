@@ -1,0 +1,22 @@
+后端核心
+Python 3.11
+LangChain 1.x
+langchain-community
+langchain-chroma
+langchain-text-splitters
+
+前端
+Streamlit
+
+向量库
+Chroma
+
+配置/数据存储
+SQLite 或 JSON
+初版建议先 JSON + 本地目录
+后面可以升级 SQLite 数据库
+
+模型层
+Tongyi / DashScope
+Embedding 用 DashScopeEmbeddings
+聊天模型用 ChatTongyi

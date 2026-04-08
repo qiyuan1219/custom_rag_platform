@@ -1,0 +1,79 @@
+1）model/factory.py
+
+统一管理模型初始化。
+
+建议提供：
+
+get_chat_model()
+get_embedding_model()
+
+以后你想加生图，也可以补：
+
+get_image_generator()
+
+这样所有模型都统一从这里走。
+
+2）services/agent_service.py
+
+负责：
+
+创建 Agent
+读取 Agent 列表
+更新 Agent 信息
+删除 Agent
+获取 Agent 的 Prompt
+获取 Agent 的知识库状态
+
+这个模块是整个平台的核心管理层。
+
+3）services/file_service.py
+
+负责：
+
+保存上传文件
+按 Agent 归档文件
+获取文件列表
+删除文件
+标记文件状态
+
+注意：
+文件上传 ≠ 自动向量化
+
+这是你这个项目很关键的设计点。
+
+4）rag/index_service.py
+
+负责：
+
+读取某个 Agent 的所有资料
+文档切分
+embedding
+写入该 Agent 对应的 Chroma collection
+更新索引状态
+
+也就是用户点“开始向量化”后，真正跑的就是这里。
+
+5）rag/rag_service.py
+
+负责：
+
+接收用户问题
+获取对应 Agent 的检索器
+检索相关文档
+组装 Prompt
+调用 LLM 生成回复
+
+这是标准 RAG 问答主链。
+
+6）services/chat_service.py
+
+它是总调度层。
+
+职责：
+
+接收某个 agent_id、session_id、query
+调用 rag_service
+保存对话
+返回结果
+
+这样前端不会直接碰太多底层逻辑。

@@ -1,4 +1,3 @@
-from pathlib import Path
 from storage.paths import AGENTS_DIR
 from storage.json_store import JsonStore
 from utils.id_util import new_id
@@ -18,6 +17,9 @@ class AgentService:
             "created_at": now_str(),
             "updated_at": now_str(),
             "vector_collection_name": f"agent_{agent_id}",
+            "search_k": 4,
+            "chunk_size": 500,
+            "chunk_overlap": 80,
         }
         JsonStore.save(AGENTS_DIR / f"{agent_id}.json", agent)
         return agent
@@ -39,7 +41,19 @@ class AgentService:
         if not agent:
             raise ValueError("Agent不存在")
 
-        agent.update(kwargs)
+        allowed = {
+            "name", "category", "description", "system_prompt", "knowledge_status",
+            "search_k", "chunk_size", "chunk_overlap"
+        }
+        for key, value in kwargs.items():
+            if key in allowed:
+                agent[key] = value
+
         agent["updated_at"] = now_str()
         JsonStore.save(path, agent)
         return agent
+
+    def delete_agent(self, agent_id: str) -> None:
+        path = AGENTS_DIR / f"{agent_id}.json"
+        if path.exists():
+            path.unlink()
